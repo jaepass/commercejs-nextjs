@@ -1,0 +1,32 @@
+const ProductItem = ({ product }) => {
+
+    // dangerouslySetInnerHTML is React’s replacement for using innerHTML in the browser
+    // DOM. In general, setting HTML from code is risky because it’s easy to inadvertently expose
+    // your users to a cross-site scripting (XSS) attack. So, you can set HTML directly from React,
+    // but you have to type out dangerouslySetInnerHTML and pass an object with a __html
+    // key, to remind yourself that it’s dangerous.
+    const description = {__html: product.description};
+  
+    return (
+      <div className="product">
+        <img className="product__image" src={product.media.source} alt={product.name} />
+        <div className="product__info">
+          <h4 className="product__name">{product.name}</h4>
+          <p className="product__description" dangerouslySetInnerHTML={description}></p>
+          <div className="product__details">
+            <p className="product__price">
+              {product.price.formatted_with_symbol}
+            </p>
+            <button
+              name="View item"
+              className="product__btn"
+            >
+              View item
+            </button>
+          </div>
+        </div>
+      </div> 
+    );
+  };
+  
+  export default ProductItem;
