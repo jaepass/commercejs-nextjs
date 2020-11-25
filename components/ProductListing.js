@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ProductItem from './ProductItem';
 
-const ProductsList = ({ products }) =>  (
+const ProductListing = ({ products }) =>  (
     <div className="products" id="products">
         {products.map((product) => (
             <Link href={`/product/${product.permalink}`}>
@@ -16,4 +16,4 @@ const ProductsList = ({ products }) =>  (
     </div>
 )
 
-export default ProductsList;
+export default ProductListing;

@@ -1,0 +1,39 @@
+body {
+  @apply antialiased tracking-wider;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  @apply font-lato;
+}
+
+p {
+  @apply leading-relaxed text-sm;
+}
+
+h1 {
+  @apply text-3xl;
+}
+
+h2 {
+  @apply text-2xl font-bold tracking-widest;
+}
+
+h3 {
+  @apply text-xl font-bold tracking-widest;
+}
+
+h4 {
+  @apply text-lg tracking-wider;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+button {
+  @apply tracking-wide;
+}

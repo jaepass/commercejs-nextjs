@@ -1,4 +1,4 @@
-import commerce from '../../lib/commerce';
+import { commerce } from '../../lib/commerce';
 
 // This also gets called at build time, and fetches the product to view
 export async function getStaticProps({ params: { permalink } }) {
@@ -21,28 +21,40 @@ export async function getStaticProps({ params: { permalink } }) {
 export async function getStaticPaths() {
   const { data: products } = await commerce.products.list();
 
-  // Get the paths we want to pre-render based on product
-  const paths = products.map((product) => ({
-    params: {
-      permalink: product.permalink,
-    },
-  })),
-
   return {
-    // We'll pre-render only these paths at build time.
-    paths,
+    // Get the paths we want to pre-render based on product
+    // We pre-render only these paths at build time
+    paths: products.map((product) => ({
+      params: {
+        permalink: product.permalink,
+      },
+    })), 
     // { fallback: false } means other routes should 404.
     fallback: true,
   }
 }
 
+
 const ProductDetailPage = ({ product }) => {
   return (
-    <div className="product-page">
-      <h1>{product.name}</h1>
-      <p dangerouslySetInnerHTML={{__html: product.description}}></p>
-      <p>{product.price.formatted_with_symbol}</p>
+    <div className="product">
+    <img className="product__image" src={product.media.source} alt={product.name} />
+    <div className="product__info">
+      <h4 className="product__name">{product.name}</h4>
+      <p className="product__description" dangerouslySetInnerHTML={{__html: product.description}}></p>
+      <div className="product__details">
+        <p className="product__price">
+          {product.price.formatted_with_symbol}
+        </p>
+        <button
+          name="View item"
+          className="product__btn"
+        >
+          View item
+        </button>
+      </div>
     </div>
+  </div> 
   )
 }
 

@@ -1,7 +1,7 @@
 // import Head from 'next/head'
 // import styles from '../styles/Home.module.css'
 import { commerce } from '../lib/commerce'
-import ProductsList from '../components/ProductsList';
+import ProductListing from '../components/ProductListing';
 
 export async function getStaticProps() {
   const merchant = await commerce.merchants.about();
@@ -17,7 +17,7 @@ export async function getStaticProps() {
 
 const Home = ({ products }) => (
   <div>
-    <ProductsList products={products} />
+    <ProductListing products={products} />
   </div>
 );
 
