@@ -1,7 +1,9 @@
+import { useRouter } from 'next/router'
 import { commerce } from '../../lib/commerce';
 
 // This also gets called at build time, and fetches the product to view
-export async function getStaticProps({ params: { permalink } }) {
+export async function getStaticProps({ params }) {
+  const { permalink } = params;
   // params contains the product's `permalink`.
   // If the route is /product/book,
   // then params.permalink is `book`
@@ -17,6 +19,7 @@ export async function getStaticProps({ params: { permalink } }) {
     }
   }
 }
+
 
 export async function getStaticPaths() {
   const { data: products } = await commerce.products.list();
@@ -36,6 +39,14 @@ export async function getStaticPaths() {
 
 
 const ProductDetailPage = ({ product }) => {
+  const router = useRouter();
+
+  // If the page is not yet generated, this will be displayed
+  // initially until getStaticProps() finishes running
+  if (router.isFallback) {
+    return <div>Loading...</div>
+  }
+
   return (
     <div className="product">
     <img className="product__image" src={product.media.source} alt={product.name} />
