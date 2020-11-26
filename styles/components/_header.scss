@@ -1,0 +1,11 @@
+.header {
+  @apply justify-between flex absolute z-20 w-full bg-white border-black border-4 p-4;
+
+  &__text-logo {
+    @apply text-3xl font-bold uppercase;
+  }
+
+  &__shop {
+    @apply self-center font-bold text-xl;
+  }
+}

@@ -1,6 +1,8 @@
 // import Head from 'next/head'
-// import styles from '../styles/Home.module.css'
 import { commerce } from '../lib/commerce'
+
+import Header from '../components/Header';
+import Hero from '../components/Hero';
 import ProductListing from '../components/ProductListing';
 
 export async function getStaticProps() {
@@ -15,10 +17,12 @@ export async function getStaticProps() {
   }
 }
 
-const Home = ({ products }) => (
+const Index = ({ merchant, products }) => (
   <div>
+    <Header merchant={merchant}/>
+    <Hero />
     <ProductListing products={products} />
   </div>
 );
 
-export default Home;
+export default Index;

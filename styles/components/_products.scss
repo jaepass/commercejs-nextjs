@@ -26,22 +26,43 @@
   &__info {
     @apply border-black border-l-4 border-r-4 border-b-4 flex justify-between px-4 py-2;
   }
+}
+
+.product-detail {
+  @apply flex;
+
+  &__image {
+    @apply border-4 border-black;
+  }
+
+  &__back {
+    @apply flex pl-6;
+
+    h4 {
+      @apply self-center;
+    }
+  }
+
+  &__icon {
+    @apply w-12 self-center;
+  }
+
+  &__name {
+    @apply font-bold text-6xl;
+  }
+
+  &__description {
+    @apply font-bold text-4xl
+  }
 
   &__details {
-    @apply flex justify-between mt-3;
+    @apply mt-3 pl-6 relative;
+    top: 50%;
+    transform: translateY(-40%);
   }
 
   &__price {
     @apply text-grey py-2;
   }
-
-  &__btn {
-    @apply bg-orange py-2 px-4 text-white text-xs uppercase ease-in-out mt-4;
-    @screen sm {
-      @apply mt-0;
-    }
-    &:hover {
-      background-color: lighten(#EF4E42, 5);
-    }
-  }
 }
+
