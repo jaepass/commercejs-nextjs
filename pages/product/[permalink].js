@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { commerce } from '../../lib/commerce';
 import Link from 'next/link';
+import ArrowLeft from '../../assets/arrow-left.svg'
 import ArrowRight from '../../assets/arrow-right.svg'
 
 // This function gets called at build time on server-side.
@@ -60,7 +61,7 @@ const ProductDetailPage = ({ product }) => {
       <div className="product-detail__info">
         <Link href="/">
           <a className="product-detail__back">
-            <img className="product__icon" src="/icons/arrow-left.svg" />
+            <ArrowLeft className="product__icon" width={42} height={42} />
             <p>Back to products</p>
           </a>
         </Link>

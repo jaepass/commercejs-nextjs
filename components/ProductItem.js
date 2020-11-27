@@ -1,4 +1,4 @@
-import ArrowLeft from '../assets/arrow-left.svg'
+import ArrowRight from '../assets/arrow-Right.svg'
 
 const ProductItem = ({ product }) => {
   
@@ -11,7 +11,7 @@ const ProductItem = ({ product }) => {
 				/>
         <div className="product__info">
           <h2 className="product__name">Shop {product.name}</h2>
-					<ArrowLeft className="product__icon" width={48} height={48} />
+					<ArrowRight className="product__icon" width={48} height={48} />
         </div>
       </div> 
     );
