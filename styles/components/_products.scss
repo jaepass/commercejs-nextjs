@@ -2,11 +2,17 @@
   @apply block m-12;
 
   @screen md {
-    @apply grid grid-cols-3 m-40 gap-x-8 gap-y-6;
+    @apply grid grid-cols-3 m-40 gap-8;
   }
 }
 
 .product {
+  @apply pb-6;
+
+  @screen md {
+    @apply pb-0;
+  }
+
   &__card {
     @apply w-7/12 m-auto my-0 pb-8;
   }
@@ -16,30 +22,10 @@
   }
 
   &__name {
-    @apply text-black self-center;
-  }
+    @apply text-xl self-center;
 
-  &__icon {
-    @apply w-12 self-center;
-  }
-
-  &__info {
-    @apply border-black border-l-4 border-r-4 border-b-4 flex justify-between px-4 py-2;
-  }
-}
-
-.product-detail {
-  @apply flex;
-
-  &__image {
-    @apply border-4 border-black;
-  }
-
-  &__back {
-    @apply flex pl-6;
-
-    h4 {
-      @apply self-center;
+    @screen md {
+      @apply text-2xl;
     }
   }
 
@@ -47,22 +33,92 @@
     @apply w-12 self-center;
   }
 
-  &__name {
-    @apply font-bold text-6xl;
+  &__info {
+    @apply border-black border-l-4 border-r-4 border-b-4 flex justify-between px-4 py-2 ease-in-out;
+
+    &:hover {
+      @apply bg-black text-white;
+
+      .product__icon {
+        path {
+          fill: white;
+        }
+      }
+    }
+  }
+}
+
+.product-detail {
+  @screen sm {
+    @apply flex;
   }
 
-  &__description {
-    @apply font-bold text-4xl
+  height: 100vh;
+
+  &__image {
+    @apply border-4 border-black;
+  }
+
+  &__back {
+    @apply flex pl-6 mt-4;
+
+    p {
+      @apply self-center font-bold uppercase pl-2;
+      font-size: 1rem;
+    }
+
+    svg {
+      @apply w-2;
+    }
   }
 
   &__details {
     @apply mt-3 pl-6 relative;
-    top: 50%;
-    transform: translateY(-40%);
+
+    @screen md {
+      top: 45%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__icon {
+    @apply w-10 self-center;
+  }
+
+  &__name {
+    @apply font-bold mb-4 text-5xl;
+  }
+
+  &__description {
+    @apply font-bold;
+
+    p {
+      @apply text-xl text-grey;
+    }
   }
 
   &__price {
-    @apply text-grey py-2;
+    @apply py-4 text-xl;
+  }
+
+  &__btn {
+    @apply fixed flex border-4 bg-white border-black p-4 uppercase tracking-wider text-xl font-bold w-4/12 text-center ease-in-out;
+    bottom: 0;
+    right: 0;
+
+    span {
+      align-self: center;
+    }
+
+    &:hover {
+      @apply bg-black text-white;
+
+      .product__icon {
+        path {
+          fill: white;
+        }
+      }
+    }
   }
 }
 

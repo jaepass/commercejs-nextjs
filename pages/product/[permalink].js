@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { commerce } from '../../lib/commerce';
 import Link from 'next/link';
+import ArrowRight from '../../assets/arrow-right.svg'
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
@@ -53,29 +54,31 @@ const ProductDetailPage = ({ product }) => {
   }
 
   return (
+    // Add head tag
     <div className="product-detail">
       <img className="product-detail__image" src={product.media.source} alt={product.name} />
       <div className="product-detail__info">
         <Link href="/">
           <a className="product-detail__back">
             <img className="product__icon" src="/icons/arrow-left.svg" />
-            <h4>Back to products</h4>
+            <p>Back to products</p>
           </a>
         </Link>
         <div className="product-detail__details">
           <h1 className="product-detail__name">{product.name}</h1>
-          <h2 className="product-detail__description" dangerouslySetInnerHTML={{__html: product.description}}></h2>
-          <h3 className="product-detail__price">
+          <div className="product-detail__description" dangerouslySetInnerHTML={{__html: product.description}}></div>
+          <div className="product-detail__price">
             {product.price.formatted_with_symbol}
-          </h3>
-          <button
-            name="View item"
-            className="product-detail__btn"
-          >
-            Add to cart
-          </button>
+          </div>
         </div>
       </div>
+      <button
+        name="View item"
+        className="product-detail__btn"
+      >
+      <span>Add to cart</span>
+      <ArrowRight className="product__icon" width={48} height={48} />
+    </button>
   </div> 
   )
 }

@@ -18,6 +18,7 @@
     "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
+    "babel-plugin-inline-react-svg": "^1.1.2",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^13.0.0",
     "postcss-preset-env": "^6.7.0",

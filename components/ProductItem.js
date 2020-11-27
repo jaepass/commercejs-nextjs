@@ -1,3 +1,5 @@
+import ArrowLeft from '../assets/arrow-left.svg'
+
 const ProductItem = ({ product }) => {
   
     return (
@@ -9,7 +11,7 @@ const ProductItem = ({ product }) => {
 				/>
         <div className="product__info">
           <h2 className="product__name">Shop {product.name}</h2>
-					<img className="product__icon" src="/icons/arrow-right.svg" />
+					<ArrowLeft className="product__icon" width={48} height={48} />
         </div>
       </div> 
     );
