@@ -1,8 +1,8 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import { commerce } from '../../lib/commerce';
 import Link from 'next/link';
-import ArrowLeft from '../../assets/arrow-left.svg'
-import ArrowRight from '../../assets/arrow-right.svg'
+import ArrowLeft from '../../assets/arrow-left.svg';
+import ArrowRight from '../../assets/arrow-right.svg';
 
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
@@ -67,7 +67,10 @@ const ProductDetailPage = ({ product }) => {
         </Link>
         <div className="product-detail__details">
           <h1 className="product-detail__name">{product.name}</h1>
-          <div className="product-detail__description" dangerouslySetInnerHTML={{__html: product.description}}></div>
+          <div
+            className="product-detail__description"
+            dangerouslySetInnerHTML={{__html: product.description}}
+          ></div>
           <div className="product-detail__price">
             {product.price.formatted_with_symbol}
           </div>

@@ -1,4 +1,4 @@
-import ArrowRight from '../assets/arrow-Right.svg'
+import ArrowRight from '../assets/arrow-right.svg';
 
 const ProductItem = ({ product }) => {
   
