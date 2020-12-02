@@ -1,30 +1,9 @@
-import { useRouter } from 'next/router';
 import { commerce } from '../../lib/commerce';
 import Link from 'next/link';
 import ArrowLeft from '../../assets/arrow-left.svg';
 import ArrowRight from '../../assets/arrow-right.svg';
 
 // This function gets called at build time on server-side.
-// It won't be called on client-side, so you can even do
-// direct database queries.
-export async function getStaticProps({ params }) {
-  const { permalink } = params;
-  // Call an external API endpoint to get posts.
-  // Retrieve product by permalink
-  const product = await commerce.products.retrieve(permalink, {
-    type: 'permalink'
-  });
-
-  // By returning { props: product }, the Product detail page component
-  // will receive `posts` as a prop at build time
-  // Pass product data to the page via props
-  return {
-    props: {
-      product,
-    }
-  }
-}
-
 export async function getStaticPaths() {
   const { data: products } = await commerce.products.list();
 
@@ -39,20 +18,37 @@ export async function getStaticPaths() {
         permalink: product.permalink,
       },
     })), 
+    // We'll pre-render only these paths at build time.
     // { fallback: false } means other routes should 404.
-    fallback: true,
+    fallback: false,
   }
 }
 
+// This function gets called at build time on server-side.
+// Params contains route parameters for pages using dynamic route
+export async function getStaticProps({ params }) {
+  const { permalink } = params;
+  // Call the Chec API endpoint to get products.
+  // Retrieve product by permalink
+  const product = await commerce.products.retrieve(permalink, {
+    // Must include a type value
+    type: 'permalink'
+  });
+
+  // By returning { props: product }, the Product detail page component
+  // will receive `product` as a prop at build time
+  // Pass product data to the page via props
+  return {
+    props: {
+      product,
+    },
+    // Re-generate the post at most once per second
+    // if a request comes in
+    revalidate: 60,
+  }
+}
 
 const ProductDetailPage = ({ product }) => {
-  const router = useRouter();
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <div>Loading...</div>
-  }
 
   return (
     // Add head tag
